@@ -19,14 +19,13 @@ const TweetSchema = new mongoose.Schema({
     },
     comments: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Comments',
-        autopopulate: {
-            maxDepth: 1
-        }
+        ref: 'Comment',
+        default: null
     }],
     likes: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Likes',
+        ref: 'Like',
+        default: null
     }]
 }, )
 

@@ -5,6 +5,7 @@ dotenv.config();
 async function main() {
     await mongoose.connect(process.env.MONGODB_CONN_STRING, {
         useUnifiedTopology: true,
+        useCreateIndex: true,
         useNewUrlParser: true
     })
     console.log('connected')
