@@ -5,6 +5,7 @@ const TweetService = require("../services/tweet-service");
 const LikesService = require("../services/likes-service");
 const CommentsService = require("../services/comments-service");
 
+
 router.get('/:id', async (req, res) => {
     try {
         const tweet = await TweetService.find(req.params.id)
@@ -44,7 +45,7 @@ router.post('/delete', async (req, res) => {
         comments.forEach(item => CommentsService.del(item.id));
         await TweetService.del(req.body.tweetid);
         res.status(200);
-        res.send('Tweet-Delete operation is successful');
+        res.send(req.body);
     } catch (err) {
         res.status(404);
         res.send({
@@ -79,7 +80,7 @@ router.post('/like/delete', async (req, res) => {
         const tweet = await TweetService.find(req.body.tweetid);
         await TweetService.deleteLikes(tweet, likeId);
         res.status(200);
-        res.send("Tweet Like-Delete operation is successful");
+        res.send(likeId);
     } catch (err) {
         res.status(404);
         res.send({
