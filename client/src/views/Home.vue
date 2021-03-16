@@ -1,52 +1,41 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import NavBar from '@/components/navbar.vue'
-import Content from '@/components/content.vue'
-import SideBar from '@/components/sidebar.vue'
+import NavBar from "@/components/navbar.vue";
+import Content from "@/components/content.vue";
+import SideBar from "@/components/sidebar.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     NavBar,
     Content,
-    SideBar
-  }
-}
+    SideBar,
+  },
+};
 </script>
 
-<template lang="pug">
-div
-  section.navbar
-    NavBar
-  section.content
-    Content
-  section.sidebar
-    SideBar
+<template lang="html">
+  <div>
+    <b-container class="bv-example-row">
+      <b-row class="text-center">
+        <b-col>
+          <NavBar />
+        </b-col>
+        <b-col cols="8">
+          <Content />
+        </b-col>
+        <b-col>
+          <SideBar />
+        </b-col>
+      </b-row>
+    </b-container>
+  </div>
 </template>
 
-<style scoped>
-.navbar {
-    width: 25%;
-    height: 100%;
-    float: left;
-}
-
-.content {
-    width: 50%;
-    height: 100%;
-    float: left;
-}
-
-.sidebar {
-  width: 25%;
-  height: 100%;
-  position: relative;
-  float: right;
-}
-</style>
+<style scoped></style>
