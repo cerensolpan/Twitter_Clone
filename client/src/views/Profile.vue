@@ -1,20 +1,16 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <div class="profile"></div>
 </template>
 
 <script>
 // @ is an alias to /src
 import NavBar from "@/components/navbar.vue";
-import Content from "@/components/content.vue";
 import SideBar from "@/components/sidebar.vue";
 
 export default {
-  name: "Home",
+  name: "Profile",
   components: {
     NavBar,
-    Content,
     SideBar,
   },
 };
@@ -27,9 +23,7 @@ export default {
         <b-col class="first-column">
           <NavBar />
         </b-col>
-        <b-col class="second-column">
-          <Content />
-        </b-col>
+        <b-col class="second-column"> </b-col>
         <b-col class="third-column">
           <SideBar />
         </b-col>
