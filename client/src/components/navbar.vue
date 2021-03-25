@@ -28,19 +28,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
-  position: relative;
-  width: 210px;
-  height: 542px;
+  padding: 0 20px 0 20px;
 }
 .buttonTwitter {
   width: 50px;
   height: 50px;
   border-radius: 40px;
-}
-.button {
-  border: none;
-  width: 210px;
-  margin: 2px;
 }
 </style>

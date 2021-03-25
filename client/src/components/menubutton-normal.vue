@@ -39,11 +39,12 @@ export default {
 <style scoped>
 .menu-button-normal {
   border-radius: 53px;
-  padding: 10px 19px 11px 10px;
+  padding: 8px 19px 8px 10px;
   display: flex;
   align-items: center;
   text-align: left;
   text-decoration: none;
+  margin: 2px;
 }
 .active {
   background-color: rgba(29, 161, 242, 1);
@@ -55,7 +56,7 @@ a:hover {
   background-color: rgba(29, 161, 242, 1);
 }
 .title {
-  color: white;
+  color: rgb(217, 217, 217);
   margin: 0px;
   margin-left: 10px;
 }

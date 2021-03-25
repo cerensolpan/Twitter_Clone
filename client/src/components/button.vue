@@ -17,6 +17,8 @@ export default {
   align-items: center;
   text-align: center;
   justify-content: center;
+  align-self: stretch;
+  border: none;
 }
 .tweet {
   color: white;
