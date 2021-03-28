@@ -22,23 +22,27 @@ export default {
 
 <template lang="html">
   <div>
-    <b-container class="bv-example-row">
-      <b-row class="text-center">
-        <b-col class="first-column">
-          <NavBar />
-        </b-col>
-        <b-col class="second-column">
-          <Content />
-        </b-col>
-        <b-col class="third-column">
-          <SideBar />
-        </b-col>
-      </b-row>
-    </b-container>
+    <div class="base">
+      <div class="first-column">
+        <NavBar />
+      </div>
+      <div class="second-column">
+        <Content />
+      </div>
+      <div class="third-column">
+        <SideBar />
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.base {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  text-align: left;
+}
 .first-column {
   width: 25%;
 }
@@ -48,7 +52,7 @@ export default {
 .third-column {
   width: 25%;
 }
-div {
+/* div {
   background-color: black;
-}
+} */
 </style>

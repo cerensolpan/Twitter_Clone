@@ -3,8 +3,10 @@ export default {
   name: "MenuButtonNormal",
   props: ["title", "svgName"],
   components: {},
-  data: {
-    isActive: false,
+  data: function() {
+    return {
+      isActive: false,
+    };
   },
 
   methods: {

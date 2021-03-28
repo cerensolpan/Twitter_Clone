@@ -8,17 +8,14 @@ export default {
 </script>
 
 <template lang="html">
-  <div>
+  <div class="contentSide">
     <TweetEditor />
     <Tweet />
   </div>
 </template>
 
 <style scoped>
-img {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  margin-right: 20px;
+.contentSide {
+  border: 1px solid white;
 }
 </style>
