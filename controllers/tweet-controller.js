@@ -16,6 +16,19 @@ const tweet_id = async (req, res) => {
     }
 }
 
+const tweet_all = async (req, res) => {
+    try {
+        const tweets = await TweetService.findAll()
+        res.status(200);
+        res.send(tweets);
+    } catch (err) {
+        res.status(404);
+        res.send({
+            error: "Tweet-all operation failed " + err
+        });
+    }
+}
+
 const tweet_add = async (req, res) => {
     try {
         const tweet = await TweetService.add(req.body)
@@ -119,6 +132,7 @@ const tweet_commentdelete = async (req, res) => {
 
 module.exports = {
     tweet_id,
+    tweet_all,
     tweet_add,
     tweet_delete,
     tweet_like,
