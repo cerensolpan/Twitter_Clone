@@ -70,7 +70,7 @@ export default {
           <Button type="submit" class="button" />
         </div>
       </div>
-      <div class="border"></div>
+      <!-- <div class="border"></div> -->
     </div>
   </form>
 </template>
@@ -78,10 +78,11 @@ export default {
 <style scoped>
 .tweet-editor {
   background-color: black;
-  padding: 10px 0 0;
+  padding: 10px 0 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  border-bottom: 1px solid gray;
 }
 .flex-wrapper-one {
   margin-bottom: 21px;

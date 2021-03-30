@@ -18,16 +18,32 @@ export default {
 </script>
 
 <template lang="html">
-  <div class="contentSide">
-    <TweetEditor />
-    <div v-for="tweet in tweets" :key="tweet._id">
-      <Tweet :tweet="tweet" />
+  <div>
+    <div class="contentHeader">
+      <a class="home" :href="'/home'">Home</a>
+    </div>
+    <div class="contentBody">
+      <TweetEditor />
+      <div v-for="tweet in tweets" :key="tweet._id">
+        <Tweet :tweet="tweet" />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.contentSide {
-  border: 1px solid white;
+.contentHeader {
+  padding: 10px;
+  background-color: black;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+.home {
+  text-decoration: none;
+  color: white;
+}
+
+.contentBody {
+  border: 1px solid gray;
 }
 </style>

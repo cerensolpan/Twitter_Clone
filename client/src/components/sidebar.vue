@@ -1,14 +1,19 @@
 <script>
+import SearchBox from "./searchbox.vue";
+import WidgetHeader from "./widget-header.vue";
+import TrendingList from "./trending-list.vue";
+
 export default {
-    name:"SideBar"
-}
+  name: "SideBar",
+  components: { SearchBox, WidgetHeader, TrendingList },
+};
 </script>
 
-<template lang="pug">
-    div
-        span SIDEBAR
+<template>
+  <div>
+    <SearchBox />
+    <TrendingList />
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
