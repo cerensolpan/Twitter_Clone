@@ -8,9 +8,11 @@ import {
 } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueSession from 'vue-session'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueSession)
 
 Vue.config.productionTip = false
 

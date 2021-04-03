@@ -17,6 +17,11 @@ export default {
     Content,
     SideBar,
   },
+  beforeCreate: function() {
+    if (!this.$session.exists() && !this.$session.get("twittervue")) {
+      this.$router.push("/login");
+    }
+  },
 };
 </script>
 
@@ -42,6 +47,7 @@ export default {
   width: 100%;
   display: flex;
   text-align: left;
+  background-color: black;
 }
 .first-column {
   width: 25%;

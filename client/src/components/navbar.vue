@@ -1,10 +1,11 @@
 <script>
 import MenuButtonNormal from "./menubutton-normal.vue";
 import Button from "./button.vue";
+import ProfileSettings from "./profile-setting.vue";
 
 export default {
   name: "NavBar",
-  components: { MenuButtonNormal, Button },
+  components: { MenuButtonNormal, Button, ProfileSettings },
 };
 </script>
 
@@ -20,6 +21,7 @@ export default {
     <menu-button-normal svgName="profile" title="Profile" />
     <menu-button-normal svgName="more" title="More" />
     <Button class="button" />
+    <ProfileSettings />
   </div>
 </template>
 

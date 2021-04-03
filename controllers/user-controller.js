@@ -1,4 +1,5 @@
 const UserService = require("../services/user-service");
+const passport = require('passport');
 
 const user = async (req, res) => {
     const user = await UserService.add(req.body)
@@ -38,15 +39,28 @@ const user_register = async (req, res) => {
     }
 }
 
-const user_login = async (req, res) => {
+const user_login = async (req, res, next) => {
     try {
-        const user = await UserService.findOne({
-            username: req.body.username,
-        });
-        if (!user) res.send("User can not found");
-        if (req.body.password != user.password) res.send("Password is uncorrect");
-        res.status(200);
-        res.send(user);
+        passport.authenticate('local', {
+            session: false
+        }, (err, passportUser, info) => {
+            if (err) {
+                return next(err);
+            }
+
+            if (passportUser) {
+                const user = passportUser;
+                user.token = passportUser.generateJWT();
+
+                res.status(200);
+                return res.json({
+                    user: user.toAuthJSON()
+                });
+            }
+            res.status(200);
+            return res.send(info);
+        })(req, res, next);
+
     } catch (err) {
         res.status(404);
         res.send({

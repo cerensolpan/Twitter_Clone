@@ -41,7 +41,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-bottom: 1px solid border-color;
+  border-bottom: 1px solid gray;
 }
 .tweet-container {
   padding: 10px 15px;
@@ -68,6 +68,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  color: grey;
 }
 .tweet-footer {
   padding: 0 73px 0 0;
