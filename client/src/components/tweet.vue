@@ -1,12 +1,22 @@
 <script>
 import ProfilePhoto from "./profile-photo.vue";
-import TweetImage from "./tweet-image.vue";
 import TweetButton from "./tweet-button.vue";
+import moment from "moment";
 
 export default {
   name: "Tweet",
   components: { ProfilePhoto, TweetButton },
   props: ["tweet"],
+  methods: {
+    moment: function() {
+      return moment();
+    },
+    getDate: function() {
+      var date = this.tweet.date;
+      var diff = moment(date).fromNow();
+      return diff;
+    },
+  },
 };
 </script>
 
@@ -19,7 +29,7 @@ export default {
           <div class="tweet-header">
             <div>
               {{ tweet.userid.username }} @{{ tweet.userid.nickname }}
-              {{ tweet.date }}
+              {{ getDate() }}
             </div>
             <div>{{ tweet.body }}</div>
           </div>

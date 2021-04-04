@@ -2,15 +2,13 @@
 import TweetButton from "./tweet-button.vue";
 import Button from "./button.vue";
 import ProfilePhoto from "./profile-photo.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "TweetEditor",
   components: { TweetButton, ProfilePhoto, Button },
   data() {
     return {
-      // get userid from store after the user authentication methods
-      userid: "60315f9060752a19949307a8",
       tweet: "",
       inputHeight: "0",
     };
@@ -27,23 +25,30 @@ export default {
         "min-height": this.inputHeight,
       };
     },
+    ...mapState(["user"]),
   },
   mounted() {
     this.resize();
   },
   methods: {
-    ...mapActions(["addTweet"]),
+    ...mapActions(["addTweet", "fetchUser"]),
     resize() {
       this.inputHeight = `${this.$refs.input.scrollHeight}px`;
     },
     SendTweet() {
       let newTweet = {
-        userid: this.userid,
+        userid: this.user._id,
         body: this.tweet,
       };
       this.addTweet(newTweet);
       this.tweet = "";
     },
+  },
+  created() {
+    if (!this.user.username) {
+      const userData = this.$session.get("twittervue");
+      this.fetchUser(JSON.parse(userData));
+    }
   },
 };
 </script>

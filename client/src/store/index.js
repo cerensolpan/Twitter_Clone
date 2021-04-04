@@ -9,11 +9,12 @@ export default new Vuex.Store({
     tweets: [],
     tweet: {},
     newTweet: '',
-    // users: [],
     user: {},
+    error: '',
   },
   mutations: {
     SET_TWEETS(state, data) {
+
       state.tweets = data;
     },
     SET_TWEET(state, data) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     SET_USER(state, data) {
       state.user = data;
     },
+    SET_ERROR(state, data) {
+      state.error = data;
+    }
   },
   actions: {
 
@@ -33,7 +37,7 @@ export default new Vuex.Store({
     }) {
 
       const result = await axios.get(`${process.env.VUE_APP_API_URL}/tweet/all`);
-      commit("SET_TWEETS", result.data);
+      commit("SET_TWEETS", result.data.reverse());
     },
 
     async fetchTweet({
@@ -55,9 +59,27 @@ export default new Vuex.Store({
 
     async fetchUser({
       commit
-    }, id) {
-      const result = await axios.get(`${process.env.VUE_APP_API_URL}/user/${id}`);
-      commit("SET_USER", result.data);
+    }, user) {
+      // const result = await axios.get(`${process.env.VUE_APP_API_URL}/user/${id}`);
+      commit("SET_USER", user);
+    },
+
+    async login({
+      commit,
+      dispatch
+    }, input) {
+
+      const response = await axios.post(`${process.env.VUE_APP_API_URL}/user/login`, input)
+        .then(res => res.data)
+        .catch((err) => console.log(err));
+      commit("SET_USER", response.user);
+
+    },
+    async resetError({
+      commit
+    }) {
+      let data = "";
+      commit("SET_ERROR", data);
     },
   },
   modules: {}

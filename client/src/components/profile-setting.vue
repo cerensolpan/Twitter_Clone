@@ -11,6 +11,9 @@ export default {
       this.$session.destroy();
       this.$router.push("/login");
     },
+    drop: function() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    },
   },
   computed: {
     ...mapState(["user"]),
@@ -18,7 +21,6 @@ export default {
   created() {
     if (!this.user.username) {
       const userData = this.$session.get("twittervue");
-      console.log({ userData });
       this.fetchUser(JSON.parse(userData));
     }
   },
@@ -27,13 +29,14 @@ export default {
 
 <template>
   <div class="dropdown">
-    <button class="dropbtn">
+    <button v-on:click="drop" class="dropbtn">
       <ProfilePhoto class="profile-photo" />
       <div class="body">
-        <p class="name">{{ user.username }} @{{ user.nickname }}</p>
+        <p class="name">{{ user.username }}</p>
+        <p class="nickname">@{{ user.nickname }}</p>
       </div>
     </button>
-    <div class="dropdown-content">
+    <div id="myDropdown" class="dropdown-content">
       <button @click="logout">Log out</button>
     </div>
   </div>
@@ -42,37 +45,42 @@ export default {
 <style scoped>
 .dropbtn {
   background-color: black;
-  border-radius: 40px;
+  border-radius: 47px;
   padding: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
   display: flex;
   align-items: center;
+  text-align: center;
+  justify-content: center;
+  /* align-self: stretch; */
+  border: none;
 }
 
-/* .dropbtn {
-  background-color: #4caf50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-} */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: rgb(6, 150, 247);
+}
 
-/* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
+  /* display: inline-flexbox; */
+  /* padding: 8px 20px 8px 20px; */
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #f1f1f1;
+  /* min-width: 160px; */
+  overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
   z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -80,37 +88,15 @@ export default {
   display: block;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+.dropdown a:hover {
+  background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.show {
   display: block;
 }
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: grey;
-}
-
-.profile-photo {
-  margin-right: 11px;
-}
-.body {
-  margin-right: 76px;
-  padding: 0 0 17px;
-  position: relative;
-}
-.name {
-  color: white;
-  position: relative;
-}
-.slug {
-  color: gray;
-  position: absolute;
-  left: 0;
-  top: 17px;
+.name,
+.nickname {
+  margin: 0;
 }
 </style>

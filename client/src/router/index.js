@@ -8,6 +8,7 @@ import Bookmarks from '../views/Bookmarks.vue'
 import Lists from '../views/Lists.vue'
 import Profile from '../views/Profile.vue'
 import More from '../views/More.vue'
+import Login from '../views/Login.vue'
 
 
 Vue.use(VueRouter)
@@ -61,6 +62,11 @@ const routes = [{
     path: '/more',
     name: 'More',
     component: More
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
 
 ]
